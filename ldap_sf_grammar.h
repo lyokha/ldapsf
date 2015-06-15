@@ -41,6 +41,7 @@ using namespace boost::spirit;
 using namespace boost::spirit::qi;
 using namespace boost::spirit::unicode;
 using namespace boost::phoenix;
+using boost::spirit::qi::rule;
 using boost::spirit::unicode::space;
 using boost::spirit::unicode::space_type;
 using boost::spirit::unicode::alpha;
