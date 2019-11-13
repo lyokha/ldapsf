@@ -37,7 +37,7 @@ void  Compiler::operator()( NodeList &  nodes, Node &  node ) const
 void  Compiler::operator()( Node &  node, NodeList &  nodes,
                             FilterComp  comp ) const
 {
-  node = comp;
+  node = Subtree( comp );
   Subtree &  tree = boost::get< Subtree >( node );
   tree.children_ = std::move( nodes );
 }
@@ -45,7 +45,7 @@ void  Compiler::operator()( Node &  node, NodeList &  nodes,
 
 void  Compiler::operator()( Node &  node, Node &  nodeNest ) const
 {
-  node = FC_Not;
+  node = Subtree( FC_Not );
   Subtree &  tree = boost::get< Subtree >( node );
   tree.children_.emplace_back( std::move( nodeNest ) );
 }
