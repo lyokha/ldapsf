@@ -77,6 +77,9 @@ int  main( void )
 
   SearchFilter       filter;
 
+  // FIXME: by some reason phrase_parse() called from buildQuery() fails on
+  //        queries containing Cyrillic letters with newer Boost::Spirit
+  //        versions (at least with Boost 1.73 on Fedora 33)
   std::string        query( "(&(name=*мен)(!(sname=*ван*))(grade=*))" );
   Node               tree( filter.buildQuery( query ) );
   Node               tree0( tree );
@@ -107,7 +110,7 @@ int  main( void )
   std::cout << std::endl;
   printQuery( tree0 );
 
-  found = filter( tree0, records, Collator::IDENTICAL );
+  found = filter( tree0, records, Eval::Collator::IDENTICAL );
 
   std::cout << std::endl << ">>> Found (identical collation)";
 

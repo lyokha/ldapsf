@@ -23,7 +23,7 @@ There is a test example showing how to use the library inside sub-directory
 requires linkage against *jsoncpp*. To compile the example run
 
 ```sh
-g++ -std=c++11 -I/usr/include/jsoncpp -o test test.cpp -lldapsf -ljsoncpp
+g++ -std=c++11 -o test test.cpp -lldapsf -ljsoncpp
 ```
 
 in a terminal. The data records in the test file contain UTF-8 encoded samples
