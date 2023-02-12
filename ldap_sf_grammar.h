@@ -25,9 +25,9 @@
 #include <vector>
 #include <memory>
 #include <boost/spirit/include/qi.hpp>
-#include <boost/spirit/include/phoenix_core.hpp>
-#include <boost/spirit/include/phoenix_operator.hpp>
-#include <boost/spirit/include/phoenix_function.hpp>
+#include <boost/phoenix/core.hpp>
+#include <boost/phoenix/operator.hpp>
+#include <boost/phoenix/function.hpp>
 #include <boost/optional.hpp>
 #include "ldap_sf_ast.h"
 
@@ -42,7 +42,6 @@ using namespace boost::spirit::qi;
 using namespace boost::spirit::unicode;
 using namespace boost::phoenix;
 using boost::spirit::qi::rule;
-using boost::spirit::unicode::space;
 using boost::spirit::unicode::space_type;
 using boost::spirit::unicode::alpha;
 using boost::spirit::unicode::alnum;

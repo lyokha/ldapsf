@@ -23,6 +23,7 @@
 #include <list>
 #include <memory>
 #include <boost/variant/recursive_variant.hpp>
+#include "ldap_sf_encoding.h"
 
 
 namespace  ldap
@@ -67,23 +68,23 @@ struct  Subtree;
 
 struct  Item;
 
-typedef recursive_wrapper< Subtree >   Tree;
+typedef recursive_wrapper< Subtree >  Tree;
 
-typedef std::shared_ptr< Item >        ItemPtr;
+typedef std::shared_ptr< Item >       ItemPtr;
 
-typedef variant< Tree, ItemPtr >       Node;
+typedef variant< Tree, ItemPtr >      Node;
 
-typedef std::vector< Node >            NodeList;
+typedef std::vector< Node >           NodeList;
 
-typedef std::string                    Value;
+typedef ValueType                     Value;
 
-typedef std::string                    Attr;
+typedef std::string                   Attr;
 
-typedef std::string                    MatchingRule;
+typedef std::string                   MatchingRule;
 
-typedef std::list< std::string >       AttrOptionsList;
+typedef std::list< std::string >      AttrOptionsList;
 
-typedef std::vector< std::string >     ValueList;
+typedef std::vector< ValueType >      ValueList;
 
 
 struct  ValueListMore

@@ -25,11 +25,11 @@ namespace  ldap
 
 sf::Node  SearchFilter::buildQuery( const std::string &  query ) const
 {
-  std::string::const_iterator  begin( query.begin() );
-  std::string::const_iterator  end( query.end() );
-  sf::Node                     ast;
+  GrammarIterator  begin( query.begin() );
+  GrammarIterator  end( query.end() );
+  sf::Node         ast;
 
-  if ( ! sf::phrase_parse( begin, end, grammar_, sf::space, ast ) ||
+  if ( ! sf::phrase_parse( begin, end, grammar_, space_, ast ) ||
        begin != end )
     throw std::runtime_error( "Failed to build a query '" + query + "'" );
 

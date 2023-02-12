@@ -28,6 +28,7 @@ install(FILES ldap_sf_ast.h
               ldap_records.h
               ldap_sf.h
               ldap_sf_ptr.h
+              ldap_sf_encoding.h
               DESTINATION include/ldapsf)
 
 set(CPACK_PACKAGE_NAME "libldapsf")

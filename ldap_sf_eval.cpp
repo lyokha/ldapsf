@@ -133,10 +133,13 @@ Eval::RecordListPartition Eval::evalItem( const ItemPtr  item,
                                         throw std::runtime_error( col_errmsg );
                                       col->setStrength( strength );
                                       status = U_ZERO_ERROR;
+                                      ValueConverter  convert;
                                       UCollationResult
                                             res( col->compareUTF8(
                                                   StringPiece( it->second ),
-                                                  StringPiece( item->value_ ),
+                                                  StringPiece(
+                                                      convert.to_bytes(
+                                                            item->value_ ) ),
                                                   status ) );
                                       delete col;
                                       if ( U_FAILURE( status ) )
@@ -202,16 +205,18 @@ bool  Eval::testSubstring( const ValueListMore &  values,
 {
   BOOST_ASSERT( ! values.data_.empty() );
 
-  auto           begin( values.data_.begin() );
-  auto           end( values.data_.end() );
-  UnicodeString  su( UnicodeString::fromUTF8( StringPiece( s ) ) );
-  std::size_t    len( su.length() );
-  std::size_t    pos( 0 );
-  UErrorCode     status( U_ZERO_ERROR );
+  auto            begin( values.data_.begin() );
+  auto            end( values.data_.end() );
+  UnicodeString   su( UnicodeString::fromUTF8( StringPiece( s ) ) );
+  std::size_t     len( su.length() );
+  std::size_t     pos( 0 );
+  UErrorCode      status( U_ZERO_ERROR );
+  ValueConverter  convert;
 
   if ( ! values.has_front_any_ )
   {
-    UnicodeString  vu( UnicodeString::fromUTF8( StringPiece( *begin ) ) );
+    UnicodeString  vu( UnicodeString::fromUTF8(
+                                StringPiece( convert.to_bytes( *begin ) ) ) );
     StringSearch   it( vu, su, loc, NULL, status );
 
     if ( U_FAILURE( status ) )
@@ -234,7 +239,8 @@ bool  Eval::testSubstring( const ValueListMore &  values,
   {
     end = std::prev( end );
 
-    UnicodeString  vu( UnicodeString::fromUTF8( StringPiece( *end ) ) );
+    UnicodeString  vu( UnicodeString::fromUTF8(
+                                StringPiece( convert.to_bytes( *end ) ) ) );
     StringSearch   it( vu, UnicodeString( su, pos ), loc, NULL, status );
 
     if ( U_FAILURE( status ) )
@@ -257,7 +263,8 @@ bool  Eval::testSubstring( const ValueListMore &  values,
 
   for ( auto  k( begin ); k != end; ++k )
   {
-    UnicodeString  vu( UnicodeString::fromUTF8( StringPiece( *k ) ) );
+    UnicodeString  vu( UnicodeString::fromUTF8(
+                                    StringPiece( convert.to_bytes( *k ) ) ) );
     StringSearch   it( vu, UnicodeString( su, pos, len ), loc, NULL, status );
 
     if ( U_FAILURE( status ) )

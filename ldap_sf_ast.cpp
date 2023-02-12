@@ -93,10 +93,12 @@ void  Item::print( int  level ) const
     value << " )";
   }
 
+  ValueConverter  convert;
+
   switch ( type_ )
   {
   case IT_Simple:
-    value << "  |  " << value_ ;
+    value << "  |  " << convert.to_bytes( value_ );
     break;
   case IT_Substring:
     value << "  |  ";
@@ -107,7 +109,7 @@ void  Item::print( int  level ) const
     {
       if ( k != values_.data_.begin() )
         value << "* ";
-      value << *k << " ";
+      value << convert.to_bytes( *k ) << " ";
     }
     if ( values_.has_back_any_ )
       value << "* ";

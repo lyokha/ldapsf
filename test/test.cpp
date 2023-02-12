@@ -77,10 +77,7 @@ int  main( void )
 
   SearchFilter       filter;
 
-  // FIXME: by some reason phrase_parse() called from buildQuery() fails on
-  //        queries containing Cyrillic letters with newer Boost::Spirit
-  //        versions (at least with Boost 1.73 on Fedora 33)
-  std::string        query( "(&(name=*мен)(!(sname=*ван*))(grade=*))" );
+  std::string        query( u8"(&(name=*мен)(!(sname=*ван*))(grade=*))" );
   Node               tree( filter.buildQuery( query ) );
   Node               tree0( tree );
 

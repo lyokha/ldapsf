@@ -19,6 +19,7 @@
 #ifndef LDAP_SF_H
 #define LDAP_SF_H
 
+#include "ldap_sf_encoding.h"
 #include "ldap_sf_grammar.h"
 #include "ldap_sf_eval.h"
 
@@ -46,9 +47,11 @@ class  SearchFilter
                                           sf::Eval::getDefaultLocale() ) const;
 
   private:
-    sf::Grammar< std::string::const_iterator >  grammar_;
+    sf::Grammar< GrammarIterator >  grammar_;
 
-    sf::Eval                                    eval_;
+    sf::Eval                        eval_;
+
+    sf::space_type                  space_;
 };
 
 }   // namespace ldap

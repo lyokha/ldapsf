@@ -5,22 +5,19 @@ A small C++ library that implements almost complete LDAP Search Filter grammar
 as defined in [RFC 2254](http://tools.ietf.org/search/rfc2254) and a search
 facility inside a vector of key-value mapped data.
 
-Main highlights are:
+Features:
 
 * Formal Search Filter BNF grammar using header-only
-  [boost::spirit](http://www.boost.org/doc/libs/release/libs/spirit/) library.
+  [boost::spirit](https://www.boost.org/doc/libs/release/libs/spirit/) library.
   *Extensible* filter grammar is not implemented.
 * The parser supports Unicode and hex-encoded Unicode rules.
-* The search facility makes use of the [ICU](http://site.icu-project.org/)
+* The search facility makes use of the [ICU](https://icu.unicode.org/)
   internationalization library with adjustable collation levels which allows
-  searching data in a non-strict way when case and diacritics may be set to
-  ignore.
-* Heavy use of newer *C++11* standard features like *move semantics* and
-  *lambda functions*.
+  searching data in a non-strict way when case and diacritics are ignored.
 
-There is a test example showing how to use the library inside sub-directory
-*test/*. In this example data read from a *JSON* file *records.json* which
-requires linkage against *jsoncpp*. To compile the example run
+There is a test example inside sub-directory *test/* showing how to use the
+library. In this example, data is read from a *JSON* file *records.json*. This
+requires linkage against *jsoncpp* library. To compile the example, run
 
 ```sh
 g++ -std=c++11 -o test test.cpp -lldapsf -ljsoncpp
