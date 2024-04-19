@@ -18,7 +18,6 @@
 
 #include <sstream>
 #include <string>
-#include <cmath>
 #include <boost/variant/get.hpp>
 #include <boost/format.hpp>
 #include "ldap_sf_ast.h"

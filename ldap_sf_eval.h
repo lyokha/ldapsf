@@ -21,7 +21,6 @@
 
 #include <string>
 #include <utility>
-#include <memory>
 #include <unicode/coll.h>
 #include "ldap_sf_ast.h"
 #include "ldap_records.h"

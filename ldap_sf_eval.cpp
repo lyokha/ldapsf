@@ -18,7 +18,7 @@
 
 #include <algorithm>
 #include <iterator>
-#include <utility>
+#include <memory>
 #include <stdexcept>
 #include <boost/variant/get.hpp>
 #include <boost/assert.hpp>
