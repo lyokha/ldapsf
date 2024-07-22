@@ -21,9 +21,6 @@
 
 #define BOOST_SPIRIT_UNICODE
 
-#include <string>
-#include <vector>
-#include <memory>
 #include <boost/spirit/include/qi.hpp>
 #include <boost/phoenix/core.hpp>
 #include <boost/phoenix/operator.hpp>
